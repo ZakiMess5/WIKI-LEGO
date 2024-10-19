@@ -1,0 +1,177 @@
+/* Mise en page globale et réinitialisation */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
+    border-radius: 15px;
+    padding: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+}
+
+h1 {
+    color: #ff6f61;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+p, ul {
+    font-size: 1.3em;
+    color: #444;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+ul {
+    list-style-type: square;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.main-img, .content-img {
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du bouton avec des animations */
+.btn {
+    padding: 15px 35px;
+    font-size: 1.2em;
+    background: linear-gradient(135deg, #ff6f61, #ff9966);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 0.6s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 0;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #ff9966, #ff6f61);
+    transform: scale(1.1);
+}
+
+/* Footer stylisé */
+footer {
+    margin-top: 40px;
+    color: #333;
+    font-size: 0.9em;
+    z-index: 1;
+}
+
+/* Animation de fond avec des bulles */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #00c6ff, #0072ff);
+    z-index: 0;
+    overflow: hidden;
+}
+
+.background-animation::before,
+.background-animation::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: bubble 15s infinite;
+}
+
+.background-animation::before {
+    top: -150px;
+    left: 20%;
+    animation-duration: 20s;
+}
+
+.background-animation::after {
+    bottom: -150px;
+    right: 20%;
+    animation-duration: 10s;
+}
+
+@keyframes bubble {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-500px) scale(1.5);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p, ul {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+
+    .main-img, .content-img {
+        width: 200px;
+    }
+}
